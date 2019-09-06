@@ -1,4 +1,5 @@
 package cn.zch.test.threadtest;
+import org.apache.log4j.Logger;
 /***
  * @class MyTask
  * @description TODO
@@ -14,11 +15,13 @@ public class MyTask implements Runnable {
 	public MyTask(String name) {
 		this.name = name;
 	}
+	private static final Logger myLog = Logger.getLogger(MyTask.class);
 	@Override
 	public void run() {
 		try {
-			System.out.println(this.toString() + " is running!");
-			Thread.sleep(3000); //让任务执行慢点
+			myLog.info(this.toString() + " is running!");
+			//让任务执行慢点
+			Thread.sleep(3000);
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
